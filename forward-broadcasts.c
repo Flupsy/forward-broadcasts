@@ -84,10 +84,8 @@ static int process_packet(pcap_t *in, int out)
 {
 	struct pcap_pkthdr *header;
 	const u_char *data;
-	struct ether_header *eth;
 	struct ip *ip;
 	struct sockaddr_in addr;
-	u_char *payload;
 
 	DEBUG("process_packet()");
 
@@ -96,7 +94,6 @@ static int process_packet(pcap_t *in, int out)
 		return 0;
 	}
 
-	eth=(struct ether_header *) data;
 	ip=(struct ip *) (data+14);
 
 	addr.sin_family=AF_INET;
